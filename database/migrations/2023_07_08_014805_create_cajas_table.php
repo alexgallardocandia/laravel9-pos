@@ -15,9 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('estado')->default(1);
             //foraneas
-            $table->integer('user_id');
-            //references
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreignId('user_id')->nullable()->constrained('users');
 
             $table->timestamps();
         });

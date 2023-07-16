@@ -11,16 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('caja_movimientos', function (Blueprint $table) {
+        Schema::create('caja_ventas', function (Blueprint $table) {
             $table->id();
-            $table->integer('tipo');
             $table->double('monto',10,2);
-            $table->string('motivo');
             $table->integer('estado')->default(1);
             //foraneas
-            $table->integer('caja_id');
-            //references
-            $table->foreign('caja_id')->references('id')->on('cajas');
+            $table->foreignId('caja_id')->nullable()->constrained('cajas');
+            $table->foreignId('venta_id')->nullable()->constrained('ventas');
+
 
             $table->timestamps();
         });
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('caja_movimientos');
+        Schema::dropIfExists('caja_ventas');
     }
 };

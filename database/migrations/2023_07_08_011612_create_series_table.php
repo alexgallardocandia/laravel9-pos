@@ -17,10 +17,8 @@ return new class extends Migration
             $table->integer('estado')->default(1);
 
             //foraneas
-            $table->integer('comprobante_id');
-            //references
-            $table->foreign('comprobante_id')->references('id')->on('comprobantes');
-            
+            $table->foreignId('comprobante_id')->nullable()->constrained('comprobantes');
+
             $table->timestamps();
         });
     }

@@ -21,15 +21,10 @@ return new class extends Migration
             $table->integer('estado')->default(1);            
             
             //foraneas
-            $table->integer('medida_id');
-            $table->integer('marca_id');
-            $table->integer('categoria_id');
-
-            //referencias
-            $table->foreign('medida_id')->references('id')->on('medidas');
-            $table->foreign('marca_id')->references('id')->on('marcas');
-            $table->foreign('categoria_id')->references('id')->on('categorias');
-
+            $table->foreignId('medida_id')->nullable()->constrained('medidas');
+            $table->foreignId('marca_id')->nullable()->constrained('marcas');
+            $table->foreignId('categoria_id')->nullable()->constrained('categorias');
+            
             $table->timestamps();
         });
     }

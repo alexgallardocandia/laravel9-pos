@@ -28,9 +28,7 @@ return new class extends Migration
             $table->string('anticipo_documento_serie');
             $table->string('anticipo_documento_numero');
             //foreaneas
-            $table->integer('sunat_id');
-            //references
-            $table->foreign('sunat_id')->references('id')->on('sunats');
+            $table->foreignId('sunat_id')->nullable()->constrained('sunats');
 
             $table->timestamps();
         });

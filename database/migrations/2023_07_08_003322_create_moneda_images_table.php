@@ -14,11 +14,10 @@ return new class extends Migration
         Schema::create('moneda_images', function (Blueprint $table) {
             $table->id();
             $table->integer('estado')->default(1);
-            //foraneas
-            $table->integer('moneda_id');
-            $table->integer('image_id');
-            $table->foreign('moneda_id')->references('id')->on('monedas');
-            $table->foreign('image_id')->references('id')->on('images');
+            //foraneas            
+            $table->foreignId('moneda_id')->nullable()->constrained('monedas');
+            $table->foreignId('image_id')->nullable()->constrained('images');
+            
 
             $table->timestamps();
         });

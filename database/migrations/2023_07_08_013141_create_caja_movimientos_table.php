@@ -11,17 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('compra_inverntarios', function (Blueprint $table) {
+        Schema::create('caja_movimientos', function (Blueprint $table) {
             $table->id();
-            $table->double('precio',10,2);
-            $table->double('cantidad',10,2);
+            $table->integer('tipo');
+            $table->double('monto',10,2);
+            $table->string('motivo');
             $table->integer('estado')->default(1);
             //foraneas
-            $table->integer('inventario_id');
-            $table->integer('compra_id');            
-            //references
-            $table->foreign('inventario_id')->references('id')->on('inventarios');
-            $table->foreign('compra_id')->references('id')->on('compras');
+            $table->foreignId('caja_id')->nullable()->constrained('cajas');
 
             $table->timestamps();
         });
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('compra_inverntarios');
+        Schema::dropIfExists('caja_movimientos');
     }
 };

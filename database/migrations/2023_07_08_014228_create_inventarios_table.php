@@ -19,9 +19,7 @@ return new class extends Migration
             $table->integer('tipo')->default(1);
             $table->string('motivo');
             //foraneas
-            $table->integer('articulo_id');
-            //references
-            $table->foreign('articulo_id')->references('id')->on('articulos');
+            $table->foreignId('articulo_id')->nullable()->constrained('articulos');
 
             $table->timestamps();
         });

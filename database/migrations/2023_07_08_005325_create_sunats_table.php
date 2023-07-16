@@ -40,12 +40,9 @@ return new class extends Migration
             $table->double('total',10,2);
             $table->double('total_gravada',10,2);
             $table->double('total_igv',10,2);            
-            //foraneas
-            $table->integer('serie_id');
-            $table->integer('venta_id');            
-            //references
-            $table->foreign('serie_id')->references('id')->on('series');
-            $table->foreign('venta_id')->references('id')->on('ventas');
+            //foraneas            
+            $table->foreignId('serie_id')->nullable()->constrained('series');
+            $table->foreignId('venta_id')->nullable()->constrained('ventas');
 
             $table->timestamps();
         });

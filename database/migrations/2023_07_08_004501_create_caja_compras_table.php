@@ -15,12 +15,10 @@ return new class extends Migration
             $table->id();
             $table->double('monto',10,2);
             $table->integer('estado')->default(1);
-            //foraneas
-            $table->integer('caja_id');
-            $table->integer('compra_id');
-            //referencias
-            $table->foreign('caja_id')->references('id')->on('cajas');
-            $table->foreign('compra_id')->references('id')->on('compras');
+            //foraneas            
+            $table->foreignId('caja_id')->nullable()->constrained('cajas');
+            $table->foreignId('compra_id')->nullable()->constrained('compras');            
+            
 
             $table->timestamps();
         });
