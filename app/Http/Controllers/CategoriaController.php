@@ -12,7 +12,7 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        //
+        return ['hola soy categoria'];
     }
 
     /**

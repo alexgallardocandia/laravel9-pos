@@ -12,7 +12,7 @@ class MedidaController extends Controller
      */
     public function index()
     {
-        //
+        return ['hola soy medida'];
     }
 
     /**
