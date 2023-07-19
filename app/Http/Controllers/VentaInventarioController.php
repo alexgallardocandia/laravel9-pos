@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Articulo;
+use App\Models\VentaInventario;
 use Illuminate\Http\Request;
 
-class ArticuloController extends Controller
+class VentaInventarioController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return ["articulos"];
+        //
     }
 
     /**
@@ -26,7 +26,7 @@ class ArticuloController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Articulo $articulo)
+    public function show(VentaInventario $ventaInventario)
     {
         //
     }
@@ -34,7 +34,7 @@ class ArticuloController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Articulo $articulo)
+    public function update(Request $request, VentaInventario $ventaInventario)
     {
         //
     }
@@ -42,7 +42,7 @@ class ArticuloController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Articulo $articulo)
+    public function destroy(VentaInventario $ventaInventario)
     {
         //
     }

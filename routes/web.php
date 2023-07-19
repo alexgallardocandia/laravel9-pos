@@ -20,3 +20,4 @@ Route::get('/', function () {
 Route::apiResource('/marcas','MarcaController');
 Route::apiResource('/medidas','MedidaController');
 Route::apiResource('/categorias','CategoriaController');
+Route::apiResource('/articulos','ArticuloController');

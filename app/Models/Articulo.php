@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Articulo extends Model
 {
     use HasFactory;
+
+    public function Marca(){
+        return $this->belongsTo(Marca::class);
+    }
+    public function Medida(){
+        return $this->belongTo(Medida::class);
+    }
+    public function Categoria(){
+        return $this->belongTo(Categoria::class);
+    }
 }
