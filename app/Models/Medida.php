@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Medida extends Model
 {
     use HasFactory;
+
+    public function Articulo(){
+        return $this->hasMany(Articulo::class);
+    }
 }

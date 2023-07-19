@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Moneda extends Model
 {
     use HasFactory;
+
+    public function Moneda(){
+        return $this->hasMany(Moneda::class);
+    }
 }

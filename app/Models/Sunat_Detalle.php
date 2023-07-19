@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Sunat_Detalle extends Model
 {
     use HasFactory;
+
+    public function Sunat(){
+        return $this->belongsTo(Sunat::class);
+    }
 }

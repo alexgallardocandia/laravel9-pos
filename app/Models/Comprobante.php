@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Comprobante extends Model
 {
     use HasFactory;
+
+    public function Serie(){
+        return $this->hasMany(Serie::class);
+    }
 }
