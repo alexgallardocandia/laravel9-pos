@@ -12,7 +12,7 @@ class ArticuloController extends Controller
      */
     public function index()
     {
-        return ["articulos"];
+        return Articulo::with(['Marca'])->where('estado','1')->get();
     }
 
     /**
@@ -20,7 +20,17 @@ class ArticuloController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $articulo = new Articulo();
+        $articulo->nombre = $request->nombre;
+        $articulo->barra = $request->barra;
+        $articulo->medida_id = $request->medida_id;
+        $articulo->marca_id = $request->marca_id;
+        $articulo->categoria_id = $request->categoria_id;
+        $articulo->compra = $request->compra;
+        $articulo->venta = $request->venta;
+        $articulo->stock_minimo = $request->stock_minimo;
+        $articulo->save();
+        return $articulo;
     }
 
     /**
@@ -28,7 +38,10 @@ class ArticuloController extends Controller
      */
     public function show(Articulo $articulo)
     {
-        //
+        $articulo->marca = $articulo->Marca;
+        $articulo->medida = $articulo->Medida;
+        
+        return $articulo;
     }
 
     /**

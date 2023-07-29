@@ -12,7 +12,7 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        return ['hola soy categoria'];
+        return Categoria::where('estado','1')->get();
     }
 
     /**
@@ -20,7 +20,11 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $categoria = new Categoria();
+        $categoria->nombre = $request->nombre;
+        $categoria->save();
+
+        return $categoria;
     }
 
     /**
@@ -28,7 +32,7 @@ class CategoriaController extends Controller
      */
     public function show(Categoria $categoria)
     {
-        //
+        return $categoria;
     }
 
     /**

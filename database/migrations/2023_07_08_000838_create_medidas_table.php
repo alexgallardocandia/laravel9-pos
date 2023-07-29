@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('codigo');
-            $table->integer('estado');            
+            $table->integer('estado')->default(1);            
 
             $table->timestamps();
         });

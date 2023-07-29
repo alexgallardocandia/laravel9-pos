@@ -12,7 +12,7 @@ class MedidaController extends Controller
      */
     public function index()
     {
-        return ['hola soy medida'];
+        return Medida::where('estado', 1)->get();
     }
 
     /**
@@ -20,7 +20,12 @@ class MedidaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $medida = new Medida();
+        $medida->codigo = $request->codigo;
+        $medida->nombre = $request->nombre;
+        $medida->estado = $request->estado;
+        $medida->save();
+        return $medida;
     }
 
     /**
@@ -28,7 +33,7 @@ class MedidaController extends Controller
      */
     public function show(Medida $medida)
     {
-        //
+        return $medida;
     }
 
     /**
@@ -36,7 +41,11 @@ class MedidaController extends Controller
      */
     public function update(Request $request, Medida $medida)
     {
-        //
+        $medida->codigo = $request->codigo;
+        $medida->nombre = $request->nombre;
+        $medida->estado = $request->estado;
+        $medida->save();
+        return $medida;
     }
 
     /**

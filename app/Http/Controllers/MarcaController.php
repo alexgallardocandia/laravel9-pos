@@ -12,7 +12,7 @@ class MarcaController extends Controller
      */
     public function index()
     {
-        return ['hola soy marca'];
+        return Marca::where('estado', 1)->get();
     }
 
     /**
@@ -20,7 +20,12 @@ class MarcaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $marca = new Marca();
+        $marca->nombre = $request->nombre;
+        $marca->save();
+
+        return $marca;
+
     }
 
     /**
@@ -28,7 +33,7 @@ class MarcaController extends Controller
      */
     public function show(Marca $marca)
     {
-        //
+        return $marca;
     }
 
     /**
@@ -36,7 +41,9 @@ class MarcaController extends Controller
      */
     public function update(Request $request, Marca $marca)
     {
-        //
+        $marca->nombre = $request->nombre;
+        $marca->save();
+        return $marca;
     }
 
     /**
@@ -44,6 +51,9 @@ class MarcaController extends Controller
      */
     public function destroy(Marca $marca)
     {
-        //
+        $marca->estado = 0;
+        $marca->save();
+
+        return $marca;
     }
 }
