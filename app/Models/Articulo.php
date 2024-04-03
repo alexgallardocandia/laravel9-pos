@@ -9,13 +9,28 @@ class Articulo extends Model
 {
     use HasFactory;
 
-    public function Marca(){
+    protected $fillable = [
+        'nombre',
+        'barra',
+        'compra',
+        'venta',
+        'stock_minimo',
+        'estado',
+        'medida_id',
+        'marca_id',
+        'categoria_id',
+    ];
+
+    public function Marca()
+    {
         return $this->belongsTo(Marca::class);
     }
-    public function Medida(){
-        return $this->belongTo(Medida::class);
+    public function Medida()
+    {
+        return $this->belongsTo(Medida::class);
     }
-    public function Categoria(){
-        return $this->belongTo(Categoria::class);
+    public function Categoria()
+    {
+        return $this->belongsTo(Categoria::class);
     }
 }

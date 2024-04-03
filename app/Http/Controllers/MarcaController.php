@@ -20,10 +20,12 @@ class MarcaController extends Controller
      */
     public function store(Request $request)
     {
-        $marca = new Marca();
-        $marca->nombre = $request->nombre;
-        $marca->save();
-
+        // $marca = new Marca();
+        // $marca->nombre = $request->nombre;
+        // $marca->save();
+        $marca = Marca::create([
+            'nombre' => $request->nombre
+        ]);
         return $marca;
 
     }
