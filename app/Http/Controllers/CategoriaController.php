@@ -40,7 +40,10 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, Categoria $categoria)
     {
-        //
+        $categoria->nombre = $request->nombre;
+        $categoria->save();
+
+        return $categoria;
     }
 
     /**
@@ -48,6 +51,9 @@ class CategoriaController extends Controller
      */
     public function destroy(Categoria $categoria)
     {
-        //
+        $categoria->estado = 0;
+        $categoria->save();
+
+        return $categoria;
     }
 }

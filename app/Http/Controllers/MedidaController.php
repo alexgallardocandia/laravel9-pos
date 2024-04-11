@@ -23,7 +23,6 @@ class MedidaController extends Controller
         $medida = new Medida();
         $medida->codigo = $request->codigo;
         $medida->nombre = $request->nombre;
-        $medida->estado = $request->estado;
         $medida->save();
         return $medida;
     }
@@ -43,7 +42,6 @@ class MedidaController extends Controller
     {
         $medida->codigo = $request->codigo;
         $medida->nombre = $request->nombre;
-        $medida->estado = $request->estado;
         $medida->save();
         return $medida;
     }
@@ -53,6 +51,9 @@ class MedidaController extends Controller
      */
     public function destroy(Medida $medida)
     {
-        //
+        $medida->estado = 0;
+        $medida->save();
+
+        return $medida;
     }
 }
