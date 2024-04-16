@@ -12,7 +12,7 @@ class ArticuloController extends Controller
      */
     public function index()
     {
-        return Articulo::with(['Marca'])->where('estado','1')->get();
+        return Articulo::with(['Marca', 'Medida','Categoria'])->where('estado','1')->get();
     }
 
     /**
@@ -29,6 +29,7 @@ class ArticuloController extends Controller
         $articulo->compra = $request->compra;
         $articulo->venta = $request->venta;
         $articulo->stock_minimo = $request->stock_minimo;
+        $articulo->estado = 1;
         $articulo->save();
         return $articulo;
     }
@@ -50,15 +51,16 @@ class ArticuloController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, Articulo $articulo)
-    {        
-        $articulo->nombre = $request->nombre;
-        $articulo->barra = $request->barra;
-        $articulo->medida_id = $request->medida_id;
-        $articulo->marca_id = $request->marca_id;
+    {
+        $articulo->nombre       = $request->nombre;
+        $articulo->barra        = $request->barra;
+        $articulo->medida_id    = $request->medida_id;
+        $articulo->marca_id     = $request->marca_id;
         $articulo->categoria_id = $request->categoria_id;
-        $articulo->compra = $request->compra;
-        $articulo->venta = $request->venta;
+        $articulo->compra       = $request->compra;
+        $articulo->venta        = $request->venta;
         $articulo->stock_minimo = $request->stock_minimo;
+        $articulo->estado = 1;
         $articulo->save();
         return $articulo;
     }

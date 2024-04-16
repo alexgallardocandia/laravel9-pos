@@ -18,6 +18,8 @@ Route::group(['prefix'=>'api'],function(){
     Route::apiResource('/medidas','MedidaController');
     Route::apiResource('/categorias','CategoriaController');
     Route::apiResource('/articulos','ArticuloController');
+    Route::get('/inventario/kardex/{articulo}','InventarioController@kardex');
+    Route::apiResource('/inventario','InventarioController');
 });
 
 

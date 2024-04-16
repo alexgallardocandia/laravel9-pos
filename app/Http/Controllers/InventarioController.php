@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Articulo;
 use App\Models\Inventario;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,16 @@ class InventarioController extends Controller
      */
     public function index()
     {
-        //
+        return Articulo::with(['Marca', 'Medida','Categoria'])->where('estado','1')->get();
+    }
+    public function kardex(Articulo $articulo)
+    {
+        // dd($articulo);
+        $articulo->marca = $articulo->Marca;
+        $articulo->medida = $articulo->Medida;
+        $articulo->medida = $articulo->Categoria;
+        
+        return $articulo;
     }
 
     /**

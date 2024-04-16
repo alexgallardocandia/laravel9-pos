@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Medida extends Model
 {
     use HasFactory;
+    
+    protected $fillable = [
+        'nombre',
+        'codigo',
+        'estado'
+    ];
 
     public function Articulo(){
         return $this->hasMany(Articulo::class);
