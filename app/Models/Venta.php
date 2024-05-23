@@ -12,7 +12,7 @@ class Venta extends Model
     public function Caja_Venta(){
         return $this->hasMany(Caja_Venta::class);
     }
-    public function VentaInventario(){
+    public function venta_inventario(){
         return $this->hasMany(VentaInventario::class);
     }
     public function Sunat(){

@@ -5,9 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Caja_Movimiento extends Model
+class CajaMovimiento extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'tipo',
+        'monto',
+        'motivo',
+        'estado',
+        'caja_id',
+    ];
 
     public function Caja(){
         return $this->belongsTo(Caja::class);

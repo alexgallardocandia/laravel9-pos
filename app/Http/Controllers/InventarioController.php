@@ -13,14 +13,27 @@ class InventarioController extends Controller
      */
     public function index()
     {
-        return Articulo::with(['Marca', 'Medida','Categoria'])->where('estado','1')->get();
+        $model = Articulo::where('estado',1)->get();
+        $list = [];
+        
+        foreach ($model as $m) {
+            $list[] = $this->kardex($m);
+        }
+        return $list;
     }
     public function kardex(Articulo $articulo)
     {
         // dd($articulo);
         $articulo->marca = $articulo->Marca;
         $articulo->medida = $articulo->Medida;
-        $articulo->medida = $articulo->Categoria;
+        $articulo->categoria = $articulo->Categoria;
+        $articulo->inventario = $articulo->inventario()->where('estado',1)->get();
+        $articulo->ingresos = $articulo->inventario->where('tipo',1)->sum('cantidad');
+        $articulo->egresos = $articulo->inventario->where('tipo',2)->sum('cantidad');
+        $articulo->stock = $articulo->ingresos - $articulo->egresos;
+        $articulo->valorizado = $articulo->stock * $articulo->venta;
+        $articulo->inversion = $articulo->stock * $articulo->compra;
+        $articulo->ganancia = $articulo->valorizado - $articulo->inversion;
         
         return $articulo;
     }
@@ -30,7 +43,16 @@ class InventarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $inventario = Inventario::create([
+            'articulo_id'   => $request->articulo_id,
+            'tipo'   => $request->tipo,
+            'compra'   => $request->compra,
+            'venta'   => $request->venta,
+            'cantidad'   => $request->cantidad,
+            'motivo'   => $request->motivo,
+        ]);
+
+        return $inventario;
     }
 
     /**
@@ -54,6 +76,7 @@ class InventarioController extends Controller
      */
     public function destroy(Inventario $inventario)
     {
-        //
+        $inventario->estado = 0;
+        $inventario->save();
     }
 }

@@ -33,4 +33,9 @@ class Articulo extends Model
     {
         return $this->belongsTo(Categoria::class);
     }
+
+    public function inventario()
+    {
+        return $this->hasMany(Inventario::class);
+    }
 }

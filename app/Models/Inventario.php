@@ -9,6 +9,16 @@ class Inventario extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'articulo_id',
+        'tipo',
+        'compra',
+        'venta',
+        'cantidad',
+        'motivo',
+        'estado',
+    ];
+
     public function Compra_Inverntario(){
         return $this->hasMany(Compra_Inverntario::class);
     }

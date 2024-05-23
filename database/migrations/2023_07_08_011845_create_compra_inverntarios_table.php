@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('compra_inverntarios', function (Blueprint $table) {
+        Schema::create('compra_inventarios', function (Blueprint $table) {
             $table->id();
             $table->double('precio',10,2);
             $table->double('cantidad',10,2);
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('compra_inverntarios');
+        Schema::dropIfExists('compra_inventarios');
     }
 };

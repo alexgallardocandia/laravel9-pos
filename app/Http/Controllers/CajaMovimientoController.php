@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Caja_Movimiento;
+use App\Models\CajaMovimiento;
 use Illuminate\Http\Request;
 
 class CajaMovimientoController extends Controller
@@ -12,7 +12,8 @@ class CajaMovimientoController extends Controller
      */
     public function index()
     {
-        //
+        $movimientos = CajaMovimiento::all();
+        return $movimientos;
     }
 
     /**
@@ -20,13 +21,20 @@ class CajaMovimientoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cajaMovimiento = CajaMovimiento::create([
+            'motivo'    => $request->motivo,
+            'monto'    => $request->monto,
+            'tipo'    => $request->tipo,
+            'caja_id'    => $request->caja_id,
+        ]);
+
+        return $cajaMovimiento;
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Caja_Movimiento $caja_Movimiento)
+    public function show(CajaMovimiento $cajaMovimiento)
     {
         //
     }
@@ -34,7 +42,7 @@ class CajaMovimientoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Caja_Movimiento $caja_Movimiento)
+    public function update(Request $request, CajaMovimiento $cajaMovimiento)
     {
         //
     }
@@ -42,7 +50,7 @@ class CajaMovimientoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Caja_Movimiento $caja_Movimiento)
+    public function destroy(CajaMovimiento $cajaMovimiento)
     {
         //
     }

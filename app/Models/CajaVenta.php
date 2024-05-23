@@ -5,14 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Caja_Venta extends Model
+class CajaVenta extends Model
 {
     use HasFactory;
 
-    public function Caja(){
+    protected $fillable = [
+        'monto',
+        'estado',
+        'caja_id',
+        'venta_id',
+    ];
+    public function Caja()
+    {
         return $this->belongsTo(Caja::class);
     }
-    public function Venta(){
+    public function Venta()
+    {
         return $this->belongsTo(Venta::class);
     }
 }

@@ -12,7 +12,7 @@ class Compra extends Model
     public function Caja_Compra(){
         return $this->hasMany(Caja_Compra::class);
     }
-    public function Compra_Inverntario(){
-        return $this->hasMany(Compra_Inverntario::class);
+    public function Compra_Inventario(){
+        return $this->hasMany(CompraInventario::class);
     }
 }
