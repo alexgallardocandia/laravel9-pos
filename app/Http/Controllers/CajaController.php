@@ -49,7 +49,15 @@ class CajaController extends Controller
      */
     public function update(Request $request, Caja $caja)
     {
-        //
+        $caja->update([
+            'estado' => 0
+        ]);
+        $newCaja = Caja::create([
+            'user_id' => $caja->user_id,
+            'estado' => 1,
+        ]); 
+
+        return $newCaja;
     }
 
     /**
