@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Caja_Venta;
+use App\Models\CajaVenta;
 use Illuminate\Http\Request;
 
 class CajaVentaController extends Controller
@@ -26,7 +26,7 @@ class CajaVentaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Caja_Venta $caja_Venta)
+    public function show(CajaVenta $CajaVenta)
     {
         //
     }
@@ -34,7 +34,7 @@ class CajaVentaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Caja_Venta $caja_Venta)
+    public function update(Request $request, CajaVenta $CajaVenta)
     {
         //
     }
@@ -42,7 +42,7 @@ class CajaVentaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Caja_Venta $caja_Venta)
+    public function destroy(CajaVenta $CajaVenta)
     {
         //
     }

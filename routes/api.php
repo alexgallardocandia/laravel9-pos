@@ -16,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::apiResource('/cajas','CajaController');
 Route::apiResource('/cajamovimientos','CajaMovimientoController');
-
+Route::post('/articuloImages/articulo/{articulo}','ArticuloImageController@store');
+Route::post('/articuloImages/articulo/delete/{articuloImage}','ArticuloImageController@destroy');
+Route::get('/articuloImages/articulo/{articulo}','ArticuloImageController@show');
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });

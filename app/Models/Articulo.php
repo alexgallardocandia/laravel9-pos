@@ -38,4 +38,9 @@ class Articulo extends Model
     {
         return $this->hasMany(Inventario::class);
     }
+
+    public function articuloImage()
+    {
+        return $this->hasMany(ArticuloImage::class)->with(['image'])->where('estado',1)->orderBy('id','desc');
+    }
 }

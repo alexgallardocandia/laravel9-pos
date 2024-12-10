@@ -9,10 +9,20 @@ class Venta extends Model
 {
     use HasFactory;
 
-    public function Caja_Venta(){
-        return $this->hasMany(Caja_Venta::class);
+    protected $fillable = [
+        'total',
+        'pago',
+        'cambio',
+        'tipo',
+        'motivo',
+        'cliente',
+        'estado',
+    ];
+    
+    public function cajaVenta(){
+        return $this->hasMany(CajaVenta::class);
     }
-    public function venta_inventario(){
+    public function ventaInventario(){
         return $this->hasMany(VentaInventario::class);
     }
     public function Sunat(){

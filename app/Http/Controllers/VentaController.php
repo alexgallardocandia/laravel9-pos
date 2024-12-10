@@ -77,7 +77,7 @@ class VentaController extends Controller
      */
     public function show(Venta $venta)
     {
-        $venta->venta_inventario = $venta->venta_inventario()->with(['Inventario'=>function($i){
+        $venta->ventaInventario = $venta->ventaInventario()->with(['Inventario'=>function($i){
             $i->with(['Articulo'=>function($a){
                 $a->with(['Marca','Categoria', 'Medida']);
             }]);
@@ -99,7 +99,7 @@ class VentaController extends Controller
      */
     public function destroy(Venta $venta)
     {
-        $venta->estado = 0;
-        $venta->save();
+        $venta->update(['estado' => 0]);
+        $venta->cajaVenta()->update(['estado' => 0]);
     }
 }

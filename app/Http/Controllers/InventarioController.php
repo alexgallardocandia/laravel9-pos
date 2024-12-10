@@ -28,6 +28,10 @@ class InventarioController extends Controller
         $articulo->medida = $articulo->Medida;
         $articulo->categoria = $articulo->Categoria;
         $articulo->inventario = $articulo->inventario()->where('estado',1)->get();
+        $articulo->image = $articulo->articuloImage()->where('estado',1)->orderBy('created_at', 'desc')->first();
+        if ($articulo->image) {
+            $articulo->image->url = $articulo->image->image?->urlImage();
+        }
         $articulo->ingresos = $articulo->inventario->where('tipo',1)->sum('cantidad');
         $articulo->egresos = $articulo->inventario->where('tipo',2)->sum('cantidad');
         $articulo->stock = $articulo->ingresos - $articulo->egresos;
