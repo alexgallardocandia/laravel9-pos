@@ -6,6 +6,8 @@ use App\Models\CajaVenta;
 use App\Models\Venta;
 use App\Models\VentaInventario;
 use App\Models\Inventario;
+use App\Models\Sucursal;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class VentaController extends Controller
@@ -83,7 +85,17 @@ class VentaController extends Controller
             }]);
         }])->get();
         $venta->fecha = $venta->created_at->format('Y-m-d');
+        $venta->url_pdf = url('api/reportes/ventas/'.$venta->id);
         return $venta;
+    }
+
+    public function pdf(Venta $venta)
+    {
+        $sucursal = Sucursal::all()->first();
+        $venta = $this->show($venta);
+        $venta->sucursal = $sucursal;
+        $pdf = PDF::loadView('reports.venta', ["venta"=>$venta]);
+        return $pdf->stream();
     }
 
     /**

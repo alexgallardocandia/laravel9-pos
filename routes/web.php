@@ -24,6 +24,7 @@ Route::group(['prefix'=>'api'],function(){
     Route::apiResource('/inventario','InventarioController');
     Route::apiResource('/compras','CompraController');
     Route::apiResource('/ventas','VentaController');
+    Route::get('/report/ventas/{venta}','VentaController@pdf');
     Route::apiResource('/sucursal','SucursalController');
 });
 
