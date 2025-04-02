@@ -19,6 +19,11 @@ Route::apiResource('/cajamovimientos','CajaMovimientoController');
 Route::post('/articuloImages/articulo/{articulo}','ArticuloImageController@store');
 Route::post('/articuloImages/articulo/delete/{articuloImage}','ArticuloImageController@destroy');
 Route::get('/articuloImages/articulo/{articulo}','ArticuloImageController@show');
+
+Route::prefix('dashboard')->group( function() {
+    Route::get('/headers','DashboardController@headers');
+    Route::get('/sales','DashboardController@sales');
+});
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });

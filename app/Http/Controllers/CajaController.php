@@ -12,8 +12,13 @@ class CajaController extends Controller
      */
     public function index()
     {
-        $cajas = Caja::get();
-        return $cajas;
+        $cajas = Caja::orderBy('id','desc')->get();
+        $list = [];
+
+        foreach ($cajas as $caja) {
+            $list[] = $this->show($caja);
+        }
+        return $list;
     }
 
     /**
@@ -40,6 +45,8 @@ class CajaController extends Controller
         $caja->total = $total;
         $caja->total_ventas = $total_ventas;
         $caja->total_compras = $total_compras;
+        $caja->user = $caja->User;
+        $caja->fecha = $caja->created_at->format('Y-m-d');
 
         return $caja;
     }
