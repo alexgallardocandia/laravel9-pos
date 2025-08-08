@@ -341,7 +341,7 @@ body {
                                     </tr>
                                         <?php
                                         $n = 1;
-                                        foreach($venta->venta_inventarios as $d){
+                                        foreach($venta->ventaInventario as $d){
                                                                            ?>
                                         <tr class="border_top">
                                             <td align="left">
@@ -357,10 +357,10 @@ body {
                                                 {{$d->cantidad}}
                                             </td>
                                             <td align="left">
-                                            {{$d->precio}}
+                                            {{number_format($d->precio, 0, ',','.')}}
                                             </td>
                                             <td align="left">
-                                            {{$d->precio*$d->cantidad}}
+                                            {{number_format($d->precio*$d->cantidad, 0, ',','.')}}
                                             </td>
                                          
 
@@ -375,7 +375,7 @@ body {
                                         <td align="left" class="bold" colspan="4">  </td>
                                     
                                         <td align="left" class="bold" > TOTAL </td>
-                                        <td align="left" class="bold" > {{$venta->total}} </td>
+                                        <td align="left" class="bold" > {{number_format($venta->total, 0, ',','.')}} </td>
                                        
                                 
                                 
@@ -396,7 +396,7 @@ body {
                                     </tr>
                                     <tr class="border_top">
 
-                                        <td align="left" class="bold">Total de Venta: {{$venta->total}}</td>
+                                        <td align="left" class="bold">Total de Venta: {{number_format($venta->total, 0, ',','.')}}</td>
                                         <td align="left" class="bold">Recibido: {{$venta->pago}} </td>
                                         <td align="left" class="bold">Cambio: {{$venta->cambio}}</td>
                                        

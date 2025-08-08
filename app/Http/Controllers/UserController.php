@@ -37,7 +37,10 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        $user->load('Caja');
+        $user->load(['Caja' => function ($query) {
+            $query->where('estado'); 
+        }]);
+
         return $user;
     }
 
@@ -68,30 +71,35 @@ class UserController extends Controller
         return $user;
     }
 
-    public function login(LoginFormRequest $request){
-        if (Auth::attempt(['email'=>$request->email, 'password'=>$request->password], false))
-        {
+    public function login(LoginFormRequest $request)
+    {
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password], false)) {
             $user_auth = Auth::user();
             $user = User::find($user_auth->id);
-            
-            if($user->Caja)
-            {
+
+            // Crear token personal (Sanctum)
+            $token = $user->createToken('api-token')->plainTextToken;
+
+            if ($user->Caja) {
                 $user->caja = $user->Caja;
-                return $user;
+                $user->caja_id = $user->Caja->id;
             } else {
                 Caja::create([
-                    'user_id'   => $user->id,
-                    'estado'    => 1,
+                    'user_id' => $user->id,
+                    'estado' => 1,
                 ]);
-                
-
                 $user->load('Caja');
-
-                return $user;
+                $user->caja_id = $user->Caja->id;
             }
 
-        }else {
-            return response()->json(['errors'=>['login'=>['Los datos no son validos']]]);
+            return response()->json([
+                'user' => $user,
+                'access_token' => $token,
+                'token_type' => 'Bearer',
+            ]);
+        } else {
+            return response()->json(['errors' => ['login' => ['Los datos no son validos']]], 401);
         }
     }
+
 }
