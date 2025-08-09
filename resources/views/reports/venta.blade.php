@@ -397,12 +397,8 @@ body {
                                     <tr class="border_top">
 
                                         <td align="left" class="bold">Total de Venta: {{number_format($venta->total, 0, ',','.')}}</td>
-                                        <td align="left" class="bold">Recibido: {{$venta->pago}} </td>
-                                        <td align="left" class="bold">Cambio: {{$venta->cambio}}</td>
-                                       
-
-
-
+                                        {{-- <td align="left" class="bold">Recibido: {{$venta->pago}} </td>
+                                        <td align="left" class="bold">Cambio: {{$venta->cambio}}</td> --}}
                                     </tr>
 
 
