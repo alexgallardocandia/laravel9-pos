@@ -9,10 +9,10 @@ class Compra extends Model
 {
     use HasFactory;
 
-    public function Caja_Compra(){
-        return $this->hasMany(Caja_Compra::class);
+    public function cajaCompra(){
+        return $this->hasMany(CajaCompra::class);
     }
-    public function Compra_Inventario(){
+    public function compraInventario(){
         return $this->hasMany(CompraInventario::class);
     }
 }

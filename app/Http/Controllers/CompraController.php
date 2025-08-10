@@ -74,7 +74,7 @@ class CompraController extends Controller
      */
     public function show(Compra $compra)
     {
-        $compra->compra_inventario = $compra->compra_inventario()->with(['Inventario'=>function($i){
+        $compra->compraInventario = $compra->compraInventario()->with(['Inventario'=>function($i){
             $i->with(['Articulo'=>function($a){
                 $a->with(['Marca','Categoria', 'Medida']);
             }]);
