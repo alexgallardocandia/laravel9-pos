@@ -1,6 +1,6 @@
 # Variables
 COMPOSE_FILE = docker-compose.yml
-APP_CONTAINER = laravel_app
+APP_CONTAINER = app
 DB_CONTAINER = laravel_mysql
 NGINX_CONTAINER = laravel_nginx
 
